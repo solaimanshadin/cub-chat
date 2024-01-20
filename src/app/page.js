@@ -31,7 +31,7 @@ export default async function Home({searchParams}) {
         <ul className="p-4">
           {groups?.map((group) => <Link key={group.id} href={`?groupId=${group.id}`}>
            <li  className= {group.id === groupId ? 'p-2 rounded-2xl bg-red-50 flex gap-3 mb-4 items-center' : "p-2 flex gap-3 mb-4 items-center"} >
-            <Image className="rounded-full borde" width="60" height="60" src={group.photo} alt={group.name} />
+            <Image className="rounded-full border" width="60" height="60" src={group.photo} alt={group.name} />
             <p>{group.name}</p>
           </li>
           </Link>
