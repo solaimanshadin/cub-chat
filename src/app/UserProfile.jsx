@@ -7,10 +7,10 @@ import { CiLogout } from "react-icons/ci";
 function UserProfile() {
   const session = useSession()
   return (
-    <div className="flex justify-between p-2 gray-200">
-        <div className="flex gap-3">
-            <Image width="30" height="30" alt="Me" src={session?.data?.user?.image} />
-            <p>{session?.data?.user?.name}</p>
+    <div className="flex  justify-between p-2 px-4 bg-gray-50">
+        <div className="flex gap-3 items-center">
+            <Image className='rounded-full' width="34" height="34" alt="Me" src={session?.data?.user?.image} />
+            <div>{session?.data?.user?.name}</div>
         </div>
         <button><CiLogout/></button>
     </div>
