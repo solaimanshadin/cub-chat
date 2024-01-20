@@ -4,13 +4,16 @@ import React from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { signIn, useSession} from 'next-auth/react'
 import { useRouter } from 'next/navigation';
+import Loader from '@/components/Loader';
 function Page() {
     const router = useRouter()
     const session  =  useSession()
-    console.log("session", session)
     if(session.status === "authenticated") {
         router.replace('/')
-        return null
+        return <Loader />
+    }
+    if(session.status === "loading") {
+        return <Loader />
     }
     return (
         <div className="flex justify-center items-center min-h-screen ">

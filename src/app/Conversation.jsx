@@ -13,11 +13,7 @@ function Conversation({ groupId }) {
   const messageRef = useRef(null)
   const [messages, setMessages] = useState([])
   const [groupInfo, setGroupInfo] = useState({})
-  console.log("groupId", groupId)
-  const getGroups = async () => {
-    const data = await getDocs(groupCollectionRef)
-    return data?.docs?.map((doc) => ({ ...doc.data(), id: doc.id }))
-  }
+ 
   useEffect(() => {
     const q = query(
       collection(db, "groups"),
@@ -76,7 +72,8 @@ function Conversation({ groupId }) {
   return (
     <div className='h-screen '>
       <div className='flex gap-3 items-center bg-white border p-2 px-4 mb-5'>
-        <Image className="rounded-full border" src={groupInfo?.photo} width="40" height="40" alt="Group" />
+        {groupInfo?.photo &&  <Image className="rounded-full border border-red-500" src={groupInfo?.photo} width="40" height="40" alt="Group" />}
+       
         <h6>{groupInfo?.name}</h6>
       </div>
       <div className='w-full max-w-[1200px] m-auto px-5'>
@@ -85,7 +82,7 @@ function Conversation({ groupId }) {
           <div >
 
             {messages?.map((message) => <div className='flex items-start gap-2 mb-6' key={message.id}>
-              <Image className="rounded-full border" src={message?.userPhoto} width="40" height="40" alt="User" />
+              <Image className="rounded-full border border-red-500" src={message?.userPhoto} width="40" height="40" alt="User" />
               <div className="bg-white  shadow-lg py-3 px-6 rounded-3xl rounded-br-none rounded-tl-none">
                 <p className='text-red-500'>{message?.userName}</p>
                 <p> {message.body}</p>
